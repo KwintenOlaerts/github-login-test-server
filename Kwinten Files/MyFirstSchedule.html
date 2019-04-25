@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Ping Pong Table</title>
+	<link href="themes/peach.css" rel="stylesheet" />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
+		
+</head>
+<body>
+<div id="calendar" style="position: absolute; width: 100%; height: 100%;"></div>
+
+<a id="github-button" class="btn btn-block btn-social btn-github">
+		<i class="fa fa-github"></i> Sign in with Github
+	  </a>
+			
+
+<script>
+		$('#github-button').on('click', function() {
+			console.log("yoo")
+		  // Initialize with your OAuth.io app public key
+		//  key is juist nu
+		  OAuth.initialize('NxrsPmRWYaQ4s-goHBR87khppfs');
+		  // Use popup for oauth
+		  // Alternative is redirect
+		  OAuth.popup('github').then(github => {
+			console.log("yoox2")
+			console.log('github:', github);
+			// Retrieves user data from oauth provider
+			// Prompts 'welcome' message with User's email on successful login
+			// #me() is a convenient method to retrieve user data without requiring you
+			// to know which OAuth provider url to call
+			github.me().then(data => {
+			  console.log('me data:', data);
+			  alert('GitHub says your email is:' + data.email + ".\nView browser 'Console Log' for more details");
+		});
+			// Retrieves user data from OAuth provider by using #get() and
+			// OAuth provider url
+			github.get('/user').then(data => {
+			  console.log('self data:', data);
+			})
+		  });
+		})
+	  </script>
+	  <script src="MindFusion.Scheduling.js" type="text/javascript"></script>
+<script src="MyFirstSchedule.js" type="text/javascript"></script>
+</body>
+
+</html>
